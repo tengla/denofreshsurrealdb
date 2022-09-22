@@ -1,27 +1,30 @@
-import { Handlers } from "https://deno.land/x/fresh@1.1.1/server.ts";
-import Counter from "../islands/Counter.tsx";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { tw } from "https://esm.sh/v95/twind@0.16.17/twind";
+import { Container } from "../components/Container.tsx";
+import Jokes from "../islands/Jokes.tsx";
+
+const scheme = "http";
+const hostname = Deno.env.get("HOSTNAME") || "localhost";
+const port = 8000;
+const getHost = (port: number) => `${scheme}://${hostname}:${port}`;
 
 interface Data {
-  count: number;
+  joke: string
 }
 
-export const handler: Handlers<Data, { count: number}> = {
-  GET (_req, ctx) {
-    const count = ctx.state.count || 0;
-    return ctx.render({ count });
+export const handler: Handlers<Data> = {
+  async GET (_,ctx) {
+    const resp = await fetch(`${getHost(port)}/api/joke`);
+    const joke = await resp.text();
+    return ctx.render({ joke })
   }
 }
 
-export default function Home(props: unknown) {
-  console.log('props', props)
+export default function Home(props: PageProps) {
   return (
-    <div class="p-4 mx-auto max-w-screen-md">
-      <img
-        src="/logo.svg"
-        class="w-32 h-32"
-        alt="the fresh logo: a sliced lemon dripping with juice"
-      />
-      <Counter start={0} />
-    </div>
-  );
+    <Container>
+      <h1 className={tw`text-xl font-bold`}>Hello, jokes on me 😊</h1>
+      <Jokes initialJoke={props.data.joke}/>
+    </Container>
+  )
 }

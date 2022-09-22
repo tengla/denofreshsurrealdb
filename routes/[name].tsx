@@ -1,7 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { apply, tw } from "https://esm.sh/v95/twind@0.16.17/twind";
-import { css } from "https://esm.sh/v95/twind@0.16.17/css";
-import { JSX } from "preact";
+import { tw } from "https://esm.sh/v95/twind@0.16.17/twind";
+import { Container } from "../components/Container.tsx";
+import Jokes from "../islands/Jokes.tsx";
 
 const scheme = "http";
 const hostname = Deno.env.get("HOSTNAME") || "localhost";
@@ -20,25 +20,12 @@ export const handler: Handlers<Data> = {
   }
 }
 
-const Container = ({ children }: { children: JSX.Element[]}) => {
-  const style = apply`container mx-auto font-sans text-white h-screen ${css({
-    'background-color': '#243c5a'
-  })} hover:${css({
-    'background-color': '#243c5ad9'
-  })}`;
-  return (
-    <div className={tw`${style}`}>
-      {children}
-    </div>
-  )
-}
-
 export default function Greet(props: PageProps) {
 
   return (
     <Container>
       <h1 className={tw`text-xl font-bold`}>Hello {props.params.name}, jokes on me 😊</h1>
-      <p>{props.data.joke}</p>
+      <Jokes initialJoke={props.data.joke}/>
     </Container>
   )
 }
