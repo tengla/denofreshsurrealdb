@@ -1,6 +1,6 @@
 
-import { css } from "https://esm.sh/v95/twind@0.16.17/css";
-import { apply, tw } from "https://esm.sh/v95/twind@0.16.17/twind";
+import { css } from "twind/css";
+import { apply, tw } from "twind";
 import { JSX } from "preact/jsx-runtime";
 
 type ContainerProps = {
