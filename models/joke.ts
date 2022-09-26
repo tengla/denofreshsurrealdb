@@ -1,9 +1,9 @@
 
-import Surreal from "https://deno.land/x/surrealdb@v0.2.0/mod.ts";
+import Surreal from "https://deno.land/x/surrealdb@v0.5.0/mod.ts";
 
 const db = new Surreal('http://127.0.0.1:8001/rpc', 'purposely blank');
 
-async function seed(db: Surreal) {
+async function _seed(db: Surreal) {
   // Jokes courtesy of https://punsandoneliners.com/randomness/programmer-jokes/
   await db.create('jokes', {
     joke: "Why do Java developers often wear glasses? They can't C#.",
@@ -39,7 +39,7 @@ async function seed(db: Surreal) {
 
 let initialized = false;
 
-async function main(user: string, password: string): Promise<Surreal|undefined> {
+async function main(user: string, password: string): Promise<Surreal|null> {
   if (initialized) {
     return db
   }
@@ -50,13 +50,23 @@ async function main(user: string, password: string): Promise<Surreal|undefined> 
 		});
     await db.use('test', 'test');
     initialized = true;
-    await seed(db)
+    //await seed(db)
 
     return db
   } catch (error) {
     console.log(error);
+    return null
   }
 }
+
+export const api = async () => {
+  const _db = await main('develop','develop');
+  return {
+    randomJoke() {
+      return _db?.query("SELECT joke FROM jokes ORDER BY rand() LIMIT 1");
+    }
+  };
+};
 
 export default function () {
   return main('develop', 'develop')

@@ -14,7 +14,7 @@ interface Data {
 
 export const handler: Handlers<Data> = {
   async GET (_,ctx) {
-    const resp = await fetch(`${getHost(port)}/api/joke`);
+    const resp = await fetch(`${getHost(port)}/api/jokes/random`);
     const joke = await resp.text();
     return ctx.render({ joke })
   }

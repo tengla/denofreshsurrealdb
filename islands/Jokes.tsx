@@ -7,7 +7,7 @@ export default function Jokes(props: { initialJoke: string }) {
     <div class="flex gap-2 w-full">
       <p class="flex-grow-1 font-bold text-xl">{joke}</p>
       <Button onClick={() => {
-        fetch('/api/joke').then(res => {
+        fetch('/api/jokes/random').then(res => {
           res.text().then(text => {
             setJoke(text)
           })
