@@ -1,6 +1,6 @@
 import { HandlerContext } from "$fresh/server.ts";
-import {api} from '../../../models/joke.ts';
-import type { JokeType } from "../jokes.ts";
+import {api} from '~/models/joke.ts';
+import type { JokeType } from "~/models/joke.ts";
 
 export const handler = {
   async GET(_req: Request, _ctx: HandlerContext): Promise<Response>  {

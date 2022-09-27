@@ -1,5 +1,5 @@
 import { useState } from "preact/hooks";
-import { Button } from "../components/Button.tsx";
+import { Button } from "~/components/Button.tsx";
 
 export default function Jokes(props: { initialJoke: string }) {
   const [joke, setJoke] = useState(props.initialJoke)

@@ -10,7 +10,9 @@
     "twind/": "https://esm.sh/twind@0.16.17/",
     "@sinclair/typebox": "https://esm.sh/@sinclair/typebox@0.24.42",
     "ajv-formats": "https://esm.sh/ajv-formats@2.1.1",
-    "ajv": "https://esm.sh/ajv@8.6.1"
+    "ajv": "https://esm.sh/ajv@8.6.1",
+    "surrealdb/": "https://deno.land/x/surrealdb@v0.5.0/",
+    "~/": "./"
   },
   "scopes": {
     "ajv": {

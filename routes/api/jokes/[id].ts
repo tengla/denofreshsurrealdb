@@ -1,12 +1,12 @@
 import { HandlerContext } from "$fresh/server.ts";
-import { RecordError } from "https://deno.land/x/surrealdb@v0.5.0/src/errors/index.ts";
-import getDb from '../../../models/joke.ts';
+import { RecordError } from "surrealdb/src/errors/index.ts";
+import { api } from '~/models/joke.ts'
 
 export const handler = {
-  async GET(_req: Request, ctx: HandlerContext): Promise<Response>  {
-    const db = await getDb();
+  async GET(_req: Request, ctx: HandlerContext): Promise<Response> {
+    const $api = await api();
     try {
-      const joke = await db?.select(`jokes:${ctx.params.id}`);
+      const joke = await $api.find(ctx.params.id)
       return new Response(JSON.stringify(joke));
     } catch (error) {
       console.error('err', error instanceof RecordError);
@@ -23,9 +23,9 @@ export const handler = {
       });
     }
   },
-  async DELETE(_req: Request, ctx: HandlerContext): Promise<Response>  {
-    const db = await getDb();
-    const deletedJoke = await db?.delete(`jokes:${ctx.params.id}`);
+  async DELETE(_req: Request, ctx: HandlerContext): Promise<Response> {
+    const $api = await api();
+    const deletedJoke = await $api.delete(ctx.params.id);
     return new Response(JSON.stringify(deletedJoke));
   }
 }

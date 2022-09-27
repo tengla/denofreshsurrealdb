@@ -1,13 +1,8 @@
+
+import Ajv from "ajv";
 import { HandlerContext } from "$fresh/server.ts";
-import {Static,Type} from "@sinclair/typebox"
-import Ajv from "ajv"
-import getDb from '../../models/joke.ts';
-
-export const Joke = Type.Strict(Type.Object({
-  joke: Type.String(),
-}, { additionalProperties: false }));
-
-export type JokeType = Static<typeof Joke>
+import getDb from "~/models/db.ts";
+import { Joke, JokeType } from "~/models/joke.ts";
 
 const ajv = new Ajv({ allErrors: true })
 

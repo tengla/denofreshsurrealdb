@@ -11,7 +11,7 @@ export const Container = ({ children }: ContainerProps) => {
   const style = apply`container mx-auto pt-10 font-sans text-white h-screen ${css({
     'background-color': '#243c5a'
   })} hover:${css({
-    'background-color': '#243c5ad9'
+    'background-color': '#243c5a'
   })}`;
   return (
     <div className={tw`${style}`}>

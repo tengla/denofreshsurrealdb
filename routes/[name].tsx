@@ -1,7 +1,7 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { tw } from "https://esm.sh/v95/twind@0.16.17/twind";
-import { Container } from "../components/Container.tsx";
-import Jokes from "../islands/Jokes.tsx";
+import { tw } from "twind";
+import { Container } from "~/components/Container.tsx";
+import Jokes from "~/islands/Jokes.tsx";
 
 const scheme = "http";
 const hostname = Deno.env.get("HOSTNAME") || "localhost";
