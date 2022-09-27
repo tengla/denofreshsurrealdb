@@ -6,12 +6,14 @@ import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/[name].tsx";
 import * as $1 from "./routes/_middleware.ts";
 import * as $2 from "./routes/api/clinics.ts";
-import * as $3 from "./routes/api/jokes.ts";
-import * as $4 from "./routes/api/jokes/[id].ts";
-import * as $5 from "./routes/api/jokes/random.ts";
-import * as $6 from "./routes/clinic.tsx";
-import * as $7 from "./routes/clinic/new.tsx";
-import * as $8 from "./routes/index.tsx";
+import * as $3 from "./routes/api/clinics/[id].ts";
+import * as $4 from "./routes/api/jokes.ts";
+import * as $5 from "./routes/api/jokes/[id].ts";
+import * as $6 from "./routes/api/jokes/random.ts";
+import * as $7 from "./routes/clinics.tsx";
+import * as $8 from "./routes/clinics/[id].tsx";
+import * as $9 from "./routes/clinics/new.tsx";
+import * as $10 from "./routes/index.tsx";
 import * as $$0 from "./islands/Counter.tsx";
 import * as $$1 from "./islands/Jokes.tsx";
 
@@ -20,12 +22,14 @@ const manifest = {
     "./routes/[name].tsx": $0,
     "./routes/_middleware.ts": $1,
     "./routes/api/clinics.ts": $2,
-    "./routes/api/jokes.ts": $3,
-    "./routes/api/jokes/[id].ts": $4,
-    "./routes/api/jokes/random.ts": $5,
-    "./routes/clinic.tsx": $6,
-    "./routes/clinic/new.tsx": $7,
-    "./routes/index.tsx": $8,
+    "./routes/api/clinics/[id].ts": $3,
+    "./routes/api/jokes.ts": $4,
+    "./routes/api/jokes/[id].ts": $5,
+    "./routes/api/jokes/random.ts": $6,
+    "./routes/clinics.tsx": $7,
+    "./routes/clinics/[id].tsx": $8,
+    "./routes/clinics/new.tsx": $9,
+    "./routes/index.tsx": $10,
   },
   islands: {
     "./islands/Counter.tsx": $$0,

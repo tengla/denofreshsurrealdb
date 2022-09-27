@@ -33,6 +33,9 @@ export const api = async () => {
       const clinics = result![0].result as ClinicType[];
       return clinics;
     },
+    async find(id: string) {
+      return await _db?.select(`${id}`);
+    },
     create(clinic: ClinicType) {
       return _db?.create("clinics", {
         ...clinic,
